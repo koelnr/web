@@ -5,10 +5,10 @@ service cloud.firestore {
     // Pre-launch email collection
     match /pre-launch/{document} {
       // Allow anyone to create new email signups
-      allow create: if request.resource.data.keys().hasAll(['email', 'timestamp'])
-                    && request.resource.data.email is string
+      allow create: if request.resource.data.email is string
                     && request.resource.data.email.matches('.*@.*\\..*')
-                    && request.resource.data.timestamp == request.time;
+                    && request.resource.data.keys().hasAll(['email', 'timestamp'])
+                    && (!request.resource.data.keys().hasAny(['city']) || request.resource.data.city is string || request.resource.data.city == null);
 
       // Only authenticated admins can read/update/delete
       allow read, update, delete: if false;
