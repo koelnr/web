@@ -1,9 +1,12 @@
 export const siteConfig = {
   name: "Koelnr",
   tagline: "Premium Car Care",
+  description:
+    "Premium car wash services at your doorstep. Subscribe for unlimited quick washes and exclusive benefits.",
   hero: {
     title: "Welcome to Koelnr",
-    subtitle: "Premium car wash services at your doorstep. Subscribe for unlimited quick washes and exclusive benefits.",
+    subtitle:
+      "Premium car wash services at your doorstep. Subscribe for unlimited quick washes and exclusive benefits.",
     primaryCTA: "Start Your Subscription",
     secondaryCTA: "Book Quick Wash",
   },
@@ -14,23 +17,27 @@ export const siteConfig = {
       {
         icon: "🚗",
         title: "Doorstep Service",
-        description: "No need to drive anywhere. We come to your location at your scheduled time.",
+        description:
+          "No need to drive anywhere. We come to your location at your scheduled time.",
       },
       {
         icon: "⚡",
         title: "Quick & Efficient",
-        description: "15-minute quick washes with professional equipment and eco-friendly products.",
+        description:
+          "15-minute quick washes with professional equipment and eco-friendly products.",
       },
       {
         icon: "✨",
         title: "Satisfaction Guaranteed",
-        description: "Not satisfied? Get a free re-wash within 48 hours. No questions asked.",
+        description:
+          "Not satisfied? Get a free re-wash within 48 hours. No questions asked.",
       },
     ],
   },
   carCare: {
     title: "Professional Car Care",
-    description: "Our trained professionals use premium products and advanced techniques to make your car shine like new.",
+    description:
+      "Our trained professionals use premium products and advanced techniques to make your car shine like new.",
     benefits: [
       "Eco-friendly, waterless wash technology",
       "Trained and verified professionals",
@@ -72,7 +79,8 @@ export const siteConfig = {
             detail: "Free re-wash within 48 hours if unsatisfied",
           },
         ],
-        exclusions: "Excludes: Interior detailing, wax, polish (available as add-ons)",
+        exclusions:
+          "Excludes: Interior detailing, wax, polish (available as add-ons)",
         cta: "Subscribe Now",
       },
       onDemand: {
@@ -175,7 +183,8 @@ export const siteConfig = {
   },
   cta: {
     title: "Ready to Get Started?",
-    description: "Join thousands of satisfied customers who trust Koelnr for their car care needs",
+    description:
+      "Join thousands of satisfied customers who trust Koelnr for their car care needs",
     primaryButton: "Start Your Subscription",
     secondaryButton: "Contact Us",
   },
@@ -184,7 +193,12 @@ export const siteConfig = {
     sections: [
       {
         title: "Services",
-        links: ["Premium Subscription", "Quick Wash", "Add-on Services", "Corporate Plans"],
+        links: [
+          "Premium Subscription",
+          "Quick Wash",
+          "Add-on Services",
+          "Corporate Plans",
+        ],
       },
       {
         title: "Company",
@@ -200,31 +214,33 @@ export const siteConfig = {
   comingSoon: {
     badge: "Coming Soon",
     title: "Something Exciting is Coming",
-    subtitle: "We're working hard to bring you the best car wash experience. Stay tuned!",
-    description: "Koelnr is launching soon with premium car wash services at your doorstep. Be the first to know when we launch.",
+    subtitle:
+      "We're working hard to bring you the best car wash experience. Stay tuned!",
+    description:
+      "Koelnr is launching soon with premium car wash services at your doorstep. Be the first to know when we launch.",
     features: [
       {
         icon: "🚗",
         title: "Doorstep Service",
-        description: "Premium car wash at your location"
+        description: "Premium car wash at your location",
       },
       {
         icon: "⚡",
         title: "Quick Service",
-        description: "15-minute express washes"
+        description: "15-minute express washes",
       },
       {
         icon: "💎",
         title: "Premium Quality",
-        description: "Professional care for your car"
-      }
+        description: "Professional care for your car",
+      },
     ],
     notifyButton: "Notify Me",
     emailPlaceholder: "Enter your email",
     socialLinks: {
       twitter: "#",
       instagram: "#",
-      facebook: "#"
-    }
+      facebook: "#",
+    },
   },
 };
