@@ -6,7 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 interface EmailFormProps {
-  action: (prevState: any, formData: FormData) => Promise<{
+  action: (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    prevState: any,
+    formData: FormData,
+  ) => Promise<{
     success: boolean;
     message?: string;
     error?: string;
@@ -19,7 +23,7 @@ function SubmitButton({ buttonText }: { buttonText: string }) {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" disabled={pending} className="min-w-[120px]">
+    <Button type="submit" disabled={pending} className="min-w-30">
       {pending ? (
         <span className="flex items-center gap-2">
           <svg
@@ -64,7 +68,11 @@ export function EmailForm({ action, placeholder, buttonText }: EmailFormProps) {
 
   return (
     <div className="max-w-md mx-auto pt-4 space-y-4">
-      <form ref={formRef} action={formAction} className="flex flex-col sm:flex-row gap-4">
+      <form
+        ref={formRef}
+        action={formAction}
+        className="flex flex-col sm:flex-row gap-4"
+      >
         <Input
           name="email"
           type="email"
@@ -81,12 +89,12 @@ export function EmailForm({ action, placeholder, buttonText }: EmailFormProps) {
       {/* Success Message */}
       {state?.success && (
         <div
-          className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500/20 rounded-lg animate-in fade-in slide-in-from-top-2 duration-300"
+          className="flex items-center gap-2 p-4 bg-primary/10 border border-primary/20 rounded-lg animate-in fade-in slide-in-from-top-2 duration-300"
           role="status"
           aria-live="polite"
         >
           <svg
-            className="h-5 w-5 text-green-500 flex-shrink-0"
+            className="h-5 w-5 text-primary shrink-0"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -96,7 +104,7 @@ export function EmailForm({ action, placeholder, buttonText }: EmailFormProps) {
           >
             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-          <p className="text-sm font-medium text-green-600 dark:text-green-400">
+          <p className="text-sm font-medium text-primary">
             {state.message || "Thank you! We'll notify you when we launch."}
           </p>
         </div>
@@ -105,12 +113,12 @@ export function EmailForm({ action, placeholder, buttonText }: EmailFormProps) {
       {/* Error Message */}
       {state?.error && !state?.success && (
         <div
-          className="flex items-center gap-2 p-4 bg-red-500/10 border border-red-500/20 rounded-lg animate-in fade-in slide-in-from-top-2 duration-300"
+          className="flex items-center gap-2 p-4 bg-destructive/10 border border-destructive/20 rounded-lg animate-in fade-in slide-in-from-top-2 duration-300"
           role="alert"
           aria-live="assertive"
         >
           <svg
-            className="h-5 w-5 text-red-500 flex-shrink-0"
+            className="h-5 w-5 text-destructive shrink-0"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -120,7 +128,7 @@ export function EmailForm({ action, placeholder, buttonText }: EmailFormProps) {
           >
             <path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-          <p className="text-sm font-medium text-red-600 dark:text-red-400">{state.error}</p>
+          <p className="text-sm font-medium text-destructive">{state.error}</p>
         </div>
       )}
     </div>

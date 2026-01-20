@@ -39,10 +39,14 @@ export default async function ComingSoonPage() {
     `[Coming Soon] Visitor from ${decodeURIComponent(city as string)}, ${country}`,
   );
 
-  const saveEmail = async (prevState: any, formData: FormData) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const saveEmail = async (_prevState: any, formData: FormData) => {
     "use server";
     const email = formData.get("email") as string;
-    const result = await savePreLaunchEmail(email, decodeURIComponent(city as string));
+    const result = await savePreLaunchEmail(
+      email,
+      decodeURIComponent(city as string),
+    );
     return result;
   };
 

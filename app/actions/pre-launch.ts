@@ -40,7 +40,9 @@ export async function savePreLaunchEmail(email: string, city?: string) {
       timestamp: Timestamp.now(),
     });
 
-    console.log(`[Pre-launch] Email saved: ${sanitizedEmail} from ${city || 'unknown'}`);
+    console.log(
+      `[Pre-launch] Email saved: ${sanitizedEmail} from ${city || "unknown"}`,
+    );
 
     return {
       success: true,
