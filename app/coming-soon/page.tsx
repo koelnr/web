@@ -1,12 +1,32 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { headers } from "next/headers";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { FadeIn, ScrollReveal } from "@/components/animations";
 import { siteConfig } from "@/lib/config";
 import { savePreLaunchEmail } from "../actions/pre-launch";
+import { EmailForm } from "@/components/pre-launch/email-form";
+
+export const metadata: Metadata = {
+  title: `Coming Soon - ${siteConfig.name}`,
+  description: siteConfig.description,
+  openGraph: {
+    title: `Coming Soon - ${siteConfig.name}`,
+    description: siteConfig.description,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Coming Soon - ${siteConfig.name}`,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function ComingSoonPage() {
   const h = await headers();
@@ -19,10 +39,11 @@ export default async function ComingSoonPage() {
     `[Coming Soon] Visitor from ${decodeURIComponent(city as string)}, ${country}`,
   );
 
-  const saveEmail = async (formData: FormData) => {
+  const saveEmail = async (prevState: any, formData: FormData) => {
     "use server";
     const email = formData.get("email") as string;
-    await savePreLaunchEmail(email, decodeURIComponent(city as string));
+    const result = await savePreLaunchEmail(email, decodeURIComponent(city as string));
+    return result;
   };
 
   return (
@@ -63,22 +84,11 @@ export default async function ComingSoonPage() {
 
             {/* Email Form */}
             <FadeIn delay={0.5} scale={0.95}>
-              <div className="max-w-md mx-auto pt-4">
-                <form
-                  action={saveEmail}
-                  className="flex flex-col sm:flex-row gap-4"
-                >
-                  <Input
-                    name="email"
-                    autoFocus
-                    type="email"
-                    placeholder={config.emailPlaceholder}
-                    required
-                    className="flex-1"
-                  />
-                  <Button type="submit">{config.notifyButton}</Button>
-                </form>
-              </div>
+              <EmailForm
+                action={saveEmail}
+                placeholder={config.emailPlaceholder}
+                buttonText={config.notifyButton}
+              />
             </FadeIn>
 
             {/* Features Grid */}
