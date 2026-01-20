@@ -1,28 +1,18 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
+import { headers } from "next/headers";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { FadeIn, ScrollReveal } from "@/components/animations";
 import { siteConfig } from "@/lib/config";
-import Link from "next/link";
 
-export default function ComingSoonPage() {
-  const [email, setEmail] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
+export default async function ComingSoonPage() {
+  const h = await headers();
+  const country = h.get("x-vercel-ip-country");
+  const city = h.get("x-vercel-ip-city");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle email submission here
-    console.log("Email submitted:", email);
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setEmail("");
-    }, 3000);
-  };
+  console.info(`[Coming Soon] Visitor from ${city}, ${country}`);
 
   return (
     <main className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -65,31 +55,18 @@ export default function ComingSoonPage() {
             {/* Email Form */}
             <FadeIn delay={0.5} scale={0.95}>
               <div className="max-w-md mx-auto pt-4">
-                {!isSubmitted ? (
-                  <form
-                    onSubmit={handleSubmit}
-                    className="flex flex-col sm:flex-row gap-4"
-                  >
-                    <Input
-                      autoFocus
-                      type="email"
-                      placeholder={siteConfig.comingSoon.emailPlaceholder}
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      className="flex-1"
-                    />
-                    <Button type="submit">
-                      {siteConfig.comingSoon.notifyButton}
-                    </Button>
-                  </form>
-                ) : (
-                  <div className="flex items-center justify-center h-12 bg-primary/10 rounded-md border-2 border-primary">
-                    <p className="text-primary font-semibold">
-                      ✓ Thank you! We&apos;ll notify you soon.
-                    </p>
-                  </div>
-                )}
+                <form className="flex flex-col sm:flex-row gap-4">
+                  <Input
+                    autoFocus
+                    type="email"
+                    placeholder={siteConfig.comingSoon.emailPlaceholder}
+                    required
+                    className="flex-1"
+                  />
+                  <Button type="submit">
+                    {siteConfig.comingSoon.notifyButton}
+                  </Button>
+                </form>
               </div>
             </FadeIn>
 
