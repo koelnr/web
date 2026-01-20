@@ -1,4 +1,4 @@
-export const allowedCities = ["Ludhiana", "Delhi"];
+export const allowedCities = ["Ludhiana", "Delhi", "New Delhi"];
 
 export const siteConfig = {
   name: "Koelnr",

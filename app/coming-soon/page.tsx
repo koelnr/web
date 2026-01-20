@@ -12,9 +12,11 @@ export default async function ComingSoonPage() {
   const country = h.get("x-vercel-ip-country");
   const city = h.get("x-vercel-ip-city");
 
-  const config = siteConfig.comingSoon(city as string);
+  const config = siteConfig.comingSoon(decodeURIComponent(city as string));
 
-  console.info(`[Coming Soon] Visitor from ${city}, ${country}`);
+  console.info(
+    `[Coming Soon] Visitor from ${decodeURIComponent(city as string)}, ${country}`,
+  );
 
   return (
     <main className="min-h-screen bg-background flex items-center justify-center p-4">
