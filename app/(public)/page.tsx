@@ -62,22 +62,27 @@ export default function Home() {
 
         <ScrollReveal stagger={0.2} childSelector=".reveal-item">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {siteConfig.features.items.map((feature, index) => (
-              <Card
-                key={index}
-                className="reveal-item border-2 hover:shadow-lg transition-shadow"
-              >
-                <CardHeader>
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-2xl">{feature.icon}</span>
-                  </div>
-                  <CardTitle>{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {siteConfig.features.items.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <Card
+                  key={index}
+                  className="reveal-item border-2 hover:shadow-lg transition-shadow"
+                >
+                  <CardHeader>
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                      <Icon className="w-10 h-10 text-primary" />
+                    </div>
+                    <CardTitle>{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </ScrollReveal>
       </section>
