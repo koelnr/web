@@ -1,9 +1,16 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { getComingSoonRedirect } from "./lib/remote-config";
 
-export function proxy(request: NextRequest) {
-  // Redirect to coming soon page
-  return NextResponse.redirect(new URL("/coming-soon", request.url));
+export async function proxy(request: NextRequest) {
+  // Check if we should redirect to coming soon page
+  const shouldRedirect = await getComingSoonRedirect();
+
+  if (shouldRedirect) {
+    return NextResponse.redirect(new URL("/coming-soon", request.url));
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
