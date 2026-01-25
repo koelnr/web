@@ -1,29 +1,38 @@
-import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { MessageCircle, Instagram, Mail } from "lucide-react";
 import { siteConfig } from "@/lib/config";
 
 export function AppFooter() {
   return (
-    <footer className="dark bg-card text-card-foreground py-12">
+    <footer className="bg-muted border-t py-12">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className="text-2xl font-bold mb-4">{siteConfig.name}</h3>
-            <p className="text-sm">{siteConfig.footer.description}</p>
+        <div className="space-y-8">
+          <div className="text-center space-y-4">
+            <h3 className="text-2xl font-bold">{siteConfig.name}</h3>
+            <p className="text-muted-foreground">
+              A Doorstep Car Wash Service.
+            </p>
+            <p className="text-sm text-muted-foreground">Ludhiana, Punjab.</p>
           </div>
-          {siteConfig.footer.sections.map((section, index) => (
-            <div key={index}>
-              <h4 className="font-semibold mb-4">{section.title}</h4>
-              <ul className="space-y-2 text-sm">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>{link}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <Separator className="my-8 bg-accent/50" />
-        <div className="text-center text-sm">
-          <p>&copy; {siteConfig.footer.copyright}</p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button variant="outline" size="sm" className="gap-2">
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp Us
+            </Button>
+            <Button variant="outline" size="sm" className="gap-2">
+              <Instagram className="h-4 w-4" />
+              Instagram
+            </Button>
+            <Button variant="outline" size="sm" className="gap-2">
+              <Mail className="h-4 w-4" />
+              Email
+            </Button>
+          </div>
+
+          <div className="text-center text-sm text-muted-foreground border-t pt-8">
+            <p>&copy; {siteConfig.footer.copyright}</p>
+          </div>
         </div>
       </div>
     </footer>
