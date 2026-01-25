@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/config";
 
 export function AppFooter() {
   return (
-    <footer className="bg-muted border-t py-12">
+    <footer className="bg-background border-t py-12">
       <div className="container mx-auto px-4">
         <div className="space-y-8">
           <div className="text-center space-y-4">
