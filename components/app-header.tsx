@@ -1,6 +1,25 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
+
+const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  if (href.startsWith("#")) {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      const offset = 64;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  }
+};
 
 export function AppHeader() {
   return (
@@ -14,18 +33,21 @@ export function AppHeader() {
             <nav className="hidden md:flex items-center gap-6">
               <Link
                 href="#how-it-works"
+                onClick={(e) => smoothScroll(e, "#how-it-works")}
                 className="text-sm font-medium transition-colors hover:text-primary"
               >
                 How it Works
               </Link>
               <Link
                 href="#pricing"
+                onClick={(e) => smoothScroll(e, "#pricing")}
                 className="text-sm font-medium transition-colors hover:text-primary"
               >
                 Pricing
               </Link>
               <Link
                 href="#fleets"
+                onClick={(e) => smoothScroll(e, "#fleets")}
                 className="text-sm font-medium transition-colors hover:text-primary"
               >
                 Fleets
