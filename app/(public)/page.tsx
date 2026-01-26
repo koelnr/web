@@ -1,5 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, XCircle, Star } from "lucide-react";
 import Image from "next/image";
@@ -8,7 +14,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-foreground text-background">
+      <section className="dark relative min-h-[80vh] flex items-center justify-center bg-background text-foreground">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/brad-starkey-W5yX_dPokH4-unsplash.jpg"
@@ -182,13 +188,15 @@ export default function Home() {
                   ₹699 <span className="text-lg font-normal">/mo</span>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="flex-1 space-y-4">
                 <div className="space-y-3 text-sm">
                   <p>2 Exterior Wash</p>
                   <p>1 Interior Vac</p>
                 </div>
-                <Button className="w-full mt-6">Choose Plan</Button>
               </CardContent>
+              <CardFooter>
+                <Button className="w-full">Choose Plan</Button>
+              </CardFooter>
             </Card>
 
             {/* Recommended Plan */}
@@ -202,7 +210,7 @@ export default function Home() {
                   ₹1,199 <span className="text-lg font-normal">/mo</span>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="flex-1 space-y-4">
                 <div className="space-y-3 text-sm">
                   <p>4 Exterior Washes</p>
                   <p>2 Interior Vacuums</p>
@@ -217,8 +225,10 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <Button className="w-full mt-6">Join The Club</Button>
               </CardContent>
+              <CardFooter>
+                <Button className="w-full">Join The Club</Button>
+              </CardFooter>
             </Card>
 
             {/* Care+ Plan */}
@@ -229,7 +239,7 @@ export default function Home() {
                   ₹1,599 <span className="text-lg font-normal">/mo</span>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="flex-1 space-y-4">
                 <div className="space-y-3 text-sm">
                   <p>4 Exterior Washes</p>
                   <p>4 Interior Vacuums</p>
@@ -245,8 +255,10 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <Button className="w-full mt-6">Choose Plan</Button>
               </CardContent>
+              <CardFooter>
+                <Button className="w-full">Choose Plan</Button>
+              </CardFooter>
             </Card>
           </div>
 
