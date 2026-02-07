@@ -186,4 +186,29 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
+
+  .markdown-content h1 {
+    @apply mb-4 text-3xl font-black tracking-tight md:text-4xl;
+  }
+
+  .markdown-content h2 {
+    @apply mt-8 mb-3 text-2xl font-bold tracking-tight;
+  }
+
+  .markdown-content h3 {
+    @apply mt-6 mb-2 text-xl font-semibold;
+  }
+
+  .markdown-content p {
+    @apply my-3 text-sm leading-6 text-foreground/90 md:text-base;
+  }
+
+  .markdown-content ul,
+  .markdown-content ol {
+    @apply my-3 space-y-2;
+  }
+
+  .markdown-content li {
+    @apply text-sm leading-6 text-foreground/90 md:text-base;
+  }
 }
