@@ -34,6 +34,24 @@ export function AppFooter() {
             </Button>
           </div>
 
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+            <Link href="/legal/privacy-policy" className="hover:text-foreground">
+              Privacy Policy
+            </Link>
+            <Link
+              href="/legal/terms-and-conditions"
+              className="hover:text-foreground"
+            >
+              Terms and Conditions
+            </Link>
+            <Link
+              href="/legal/refund-and-cancellation-policy"
+              className="hover:text-foreground"
+            >
+              Refund & Cancellation
+            </Link>
+          </div>
+
           <div className="border-t pt-8 text-center text-sm text-muted-foreground">
             <p>&copy; {siteConfig.footer.copyright}</p>
           </div>
