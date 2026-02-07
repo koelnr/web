@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { landingPageConfig } from "@/lib/config";
+import { Logo } from "@/components/logo";
 
 const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
   if (href.startsWith("#")) {
@@ -23,14 +24,13 @@ const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
 
 export function AppHeader() {
   return (
-    <header className="sticky top-0 z-50 h-16 w-full border-b border-white/20 bg-background/80 backdrop-blur-xl supports-backdrop-filter:bg-background/65">
+    <header className="sticky top-0 z-50 h-16 w-full border-b border-white/20 bg-background">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-10">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-black tracking-tight">
-                {landingPageConfig.brand.name}
-              </span>
+              <Logo className="h-12 w-auto" />
+              <span className="sr-only">{landingPageConfig.brand.name}</span>
             </Link>
             <nav className="hidden items-center gap-6 md:flex">
               <Link
