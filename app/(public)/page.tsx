@@ -21,6 +21,22 @@ import { Separator } from "@/components/ui/separator";
 import { FadeIn, ScrollReveal } from "@/components/animations";
 import { landingPageConfig } from "@/lib/config";
 
+function AppStoreIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4 fill-current">
+      <path d="M16.61 13.33c.03 3.16 2.77 4.22 2.8 4.24-.02.08-.44 1.5-1.45 2.98-.87 1.27-1.77 2.54-3.2 2.57-1.4.03-1.85-.83-3.45-.83-1.6 0-2.1.8-3.42.85-1.37.05-2.41-1.37-3.29-2.63-1.8-2.6-3.17-7.34-1.33-10.53.91-1.58 2.54-2.58 4.32-2.61 1.35-.03 2.63.91 3.45.91.82 0 2.36-1.12 3.98-.95.68.03 2.6.27 3.83 2.07-.1.06-2.28 1.33-2.25 3.93ZM14.24 5.76c.73-.89 1.23-2.13 1.09-3.36-1.05.04-2.31.7-3.06 1.59-.67.78-1.26 2.03-1.1 3.23 1.17.09 2.37-.59 3.07-1.46Z" />
+    </svg>
+  );
+}
+
+function PlayStoreIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4 fill-current">
+      <path d="M3.7 2.5c-.42.25-.7.72-.7 1.35v16.3c0 .64.28 1.1.7 1.35l9.33-9.5L3.7 2.5Zm11.85 6.95-2.9 2.55 2.9 2.54 3.75-2.13c.93-.53.93-1.29 0-1.82l-3.75-2.14ZM4.9 22l8.98-8.8 2.98 2.62-10.4 5.9c-.74.42-1.34.46-1.56.28Zm0-20c.22-.18.82-.14 1.56.28l10.4 5.9-2.98 2.62L4.9 2Z" />
+    </svg>
+  );
+}
+
 function HeroSection() {
   const { hero, brand } = landingPageConfig;
 
@@ -72,9 +88,14 @@ function HeroSection() {
                         : "h-12 rounded-full border-white/50 bg-white/10 px-7 text-white hover:bg-white/20"
                     }
                   >
-                    <Link href={cta.href}>
+                    <Link href={cta.href} className="inline-flex items-center gap-2">
+                      {cta.store === "apple" ? (
+                        <AppStoreIcon />
+                      ) : (
+                        <PlayStoreIcon />
+                      )}
                       {cta.label}
-                      <ArrowRight className="ml-2 size-4" />
+                      <ArrowRight className="size-4" />
                     </Link>
                   </Button>
                 ))}
@@ -340,15 +361,74 @@ function FleetPricingSection() {
   );
 }
 
+function ConversionCtaSection() {
+  const { conversionCta } = landingPageConfig;
+
+  return (
+    <section className="bg-slate-50 py-24">
+      <div className="container mx-auto px-4">
+        <Card className="overflow-hidden border-primary/25 bg-gradient-to-br from-background via-background to-primary/5">
+          <CardContent className="p-8 md:p-12">
+            <div className="mx-auto max-w-3xl space-y-6 text-center">
+              <Badge className="rounded-full bg-primary/10 text-primary hover:bg-primary/20">
+                Next Step
+              </Badge>
+              <h2 className="text-3xl font-black tracking-tight md:text-5xl">
+                {conversionCta.title}
+              </h2>
+              <p className="text-muted-foreground">{conversionCta.subtitle}</p>
+              <div className="flex flex-col justify-center gap-3 sm:flex-row">
+                <Button asChild size="lg" className="rounded-full px-8">
+                  <Link href={conversionCta.primary.href}>
+                    {conversionCta.primary.label}
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="rounded-full px-8">
+                  <Link href={conversionCta.secondary.href}>
+                    {conversionCta.secondary.label}
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
+
+function MobileStickyCtaBar() {
+  const { mobileStickyCta } = landingPageConfig;
+
+  return (
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border/70 bg-background/95 p-3 backdrop-blur md:hidden">
+      <div className="mx-auto flex max-w-md gap-2">
+        <Button asChild className="h-11 flex-1 rounded-full">
+          <Link href={mobileStickyCta.primary.href}>
+            {mobileStickyCta.primary.label}
+          </Link>
+        </Button>
+        <Button asChild variant="outline" className="h-11 flex-1 rounded-full">
+          <Link href={mobileStickyCta.secondary.href}>
+            {mobileStickyCta.secondary.label}
+          </Link>
+        </Button>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background pb-20 md:pb-0">
       <HeroSection />
       <ServiceTiersSection />
       <SubscriptionPlansSection />
       <SubscriptionBenefitsSection />
       <OnDemandPricingSection />
       <FleetPricingSection />
+      <ConversionCtaSection />
+      <MobileStickyCtaBar />
     </main>
   );
 }

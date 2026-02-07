@@ -18,7 +18,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <link
           rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@1,2&f[]=clash-display@400,500,600,700&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@1,2&display=swap"
         />
       </head>
       <body>{children}</body>

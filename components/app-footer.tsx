@@ -10,7 +10,7 @@ export function AppFooter() {
       <div className="container relative mx-auto px-4">
         <div className="space-y-8">
           <div className="space-y-4 text-center">
-            <h3 className="font-display text-3xl font-black tracking-tight">
+            <h3 className="text-3xl font-black tracking-tight">
               {landingPageConfig.brand.name}
             </h3>
             <p className="text-muted-foreground">{landingPageConfig.brand.tagline}</p>

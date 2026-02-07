@@ -28,7 +28,7 @@ export function AppHeader() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-10">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="font-display text-2xl font-black tracking-tight">
+              <span className="text-2xl font-black tracking-tight">
                 {landingPageConfig.brand.name}
               </span>
             </Link>

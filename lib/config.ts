@@ -3,6 +3,7 @@ import { Car, Sparkles, Zap } from "lucide-react";
 export const allowedCities = ["Ludhiana", "Delhi", "New Delhi"];
 
 export type HeroStoreButton = {
+  store: "apple" | "play";
   label: string;
   href: string;
   variant?: "default" | "secondary" | "outline";
@@ -85,6 +86,28 @@ export type LandingPageConfig = {
     minimumCommitment: string;
     plans: FleetPlanConfig[];
   };
+  conversionCta: {
+    title: string;
+    subtitle: string;
+    primary: {
+      label: string;
+      href: string;
+    };
+    secondary: {
+      label: string;
+      href: string;
+    };
+  };
+  mobileStickyCta: {
+    primary: {
+      label: string;
+      href: string;
+    };
+    secondary: {
+      label: string;
+      href: string;
+    };
+  };
 };
 
 export const landingPageConfig: LandingPageConfig = {
@@ -122,11 +145,13 @@ export const landingPageConfig: LandingPageConfig = {
       "bg-gradient-to-b from-black/70 via-black/55 to-black/65",
     ctas: [
       {
+        store: "apple",
         label: "Download on App Store",
         href: "#",
         variant: "default",
       },
       {
+        store: "play",
         label: "Get it on Play Store",
         href: "#",
         variant: "secondary",
@@ -275,6 +300,29 @@ export const landingPageConfig: LandingPageConfig = {
         ],
       },
     ],
+  },
+  conversionCta: {
+    title: "Ready to Scale Car Care Across Your Vehicles?",
+    subtitle:
+      "Book a demo to see koelnr workflows in action or speak with sales for fleet rollout planning.",
+    primary: {
+      label: "Book Demo",
+      href: "#",
+    },
+    secondary: {
+      label: "Contact Sales",
+      href: "#",
+    },
+  },
+  mobileStickyCta: {
+    primary: {
+      label: "Book Demo",
+      href: "#",
+    },
+    secondary: {
+      label: "Contact Sales",
+      href: "#",
+    },
   },
 };
 
