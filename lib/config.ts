@@ -1,22 +1,276 @@
-import { Car, Zap, Sparkles } from "lucide-react";
+import { Car, Sparkles, Zap } from "lucide-react";
 
 export const allowedCities = ["Ludhiana", "Delhi", "New Delhi"];
 
-export const siteConfig = {
-  name: "Karwsh",
-  tagline: "Premium Car Care",
-  description:
-    "Premium car wash services at your doorstep. Subscribe for unlimited quick washes and exclusive benefits.",
+export type HeroStoreButton = {
+  label: string;
+  href: string;
+  variant?: "default" | "secondary" | "outline";
+};
+
+export type HeroConfig = {
+  badge: string;
+  title: string;
+  subtitle: string;
+  backgroundImage: {
+    src: string;
+    alt: string;
+  };
+  overlayClassName: string;
+  ctas: HeroStoreButton[];
+};
+
+export type ServiceTierConfig = {
+  id: string;
+  title: string;
+  subtitle: string;
+  price: string;
+  details: string[];
+};
+
+export type SubscriptionPlanConfig = {
+  name: string;
+  badge?: string;
+  price: string;
+  includes: string[];
+  idealFor: string;
+};
+
+export type OnDemandPriceConfig = {
+  label: string;
+  value: string;
+};
+
+export type FleetPlanConfig = {
+  name: string;
+  price: string;
+  includes: string[];
+};
+
+export type LandingPageConfig = {
+  brand: {
+    name: string;
+    tagline: string;
+    description: string;
+    copyright: string;
+  };
+  hero: HeroConfig;
+  serviceTiers: {
+    title: string;
+    subtitle: string;
+    tiers: ServiceTierConfig[];
+  };
+  subscriptionPlans: {
+    title: string;
+    subtitle: string;
+    plans: SubscriptionPlanConfig[];
+  };
+  subscriptionBenefits: {
+    title: string;
+    items: string[];
+  };
+  onDemandPricing: {
+    title: string;
+    items: OnDemandPriceConfig[];
+  };
+  fleetPricing: {
+    title: string;
+    subtitle: string;
+    minimumCommitment: string;
+    plans: FleetPlanConfig[];
+  };
+};
+
+export const landingPageConfig: LandingPageConfig = {
+  brand: {
+    name: "koelnr",
+    tagline: "Doorstep Car Care, Simplified",
+    description:
+      "Eco-friendly doorstep car care plans for individuals and fleets with predictable pricing and priority slots.",
+    copyright: "2026 koelnr. All rights reserved.",
+  },
   hero: {
-    title: "Welcome to Karwsh",
+    badge: "Now booking subscriptions",
+    title: "Consistent car care at your doorstep.",
     subtitle:
-      "Premium car wash services at your doorstep. Subscribe for unlimited quick washes and exclusive benefits.",
-    primaryCTA: "Start Your Subscription",
-    secondaryCTA: "Book Quick Wash",
+      "Book exterior washes, interior upgrades, and fleet plans with transparent monthly pricing.",
+    backgroundImage: {
+      src: "/images/brad-starkey-W5yX_dPokH4-unsplash.jpg",
+      alt: "Car being cleaned by a professional service",
+    },
+    overlayClassName:
+      "bg-gradient-to-b from-black/70 via-black/55 to-black/65",
+    ctas: [
+      {
+        label: "Download on App Store",
+        href: "#",
+        variant: "default",
+      },
+      {
+        label: "Get it on Play Store",
+        href: "#",
+        variant: "secondary",
+      },
+    ],
+  },
+  serviceTiers: {
+    title: "Service Tiers",
+    subtitle: "Choose from exterior-only service to deep interior care.",
+    tiers: [
+      {
+        id: "tier-1",
+        title: "Tier 1 - Exterior Wash",
+        subtitle: "Base Plan",
+        price:
+          "One-time: Rs 299-Rs 399 | Subscription: Rs 999-Rs 1,399/month",
+        details: [
+          "Waterless or low-water wash (eco-friendly)",
+          "Exterior shine and polish",
+          "Tire and rim cleaning",
+          "Standard duration: 25-35 minutes per vehicle",
+        ],
+      },
+      {
+        id: "tier-2",
+        title: "Tier 2 - Interior Vacuum Add-on",
+        subtitle: "Add-on Service",
+        price: "Add-on charge: Rs 149-Rs 199",
+        details: [
+          "Comprehensive vacuum of seats, floor mats, trunk",
+          "Dust wipe-down of dashboard and door panels",
+          "Air freshener application",
+          "Boosts AOV on base wash by 15-20%",
+        ],
+      },
+      {
+        id: "tier-3",
+        title: "Tier 3 - Deep Interior Cleaning",
+        subtitle: "Weekly Subscription Add-on",
+        price: "Rs 299-Rs 399 add-on to weekly subscription",
+        details: [
+          "Interior vacuum + shampooing of seats + floor mat extraction",
+          "Dashboard and steering wheel cleaning",
+          "Window glass cleaning (interior and exterior)",
+        ],
+      },
+      {
+        id: "tier-b2b",
+        title: "B2B Fleet Contracts",
+        subtitle: "Business Plans",
+        price: "Rs 1,999-Rs 2,999 per vehicle/month",
+        details: [
+          "Fixed pricing per vehicle per month",
+          "Dedicated washing slots (weekday mornings before 8 AM)",
+          "Service level agreement with guaranteed uptime and redo policy",
+          "Minimum 10 vehicles; 6-month commitment",
+        ],
+      },
+    ],
+  },
+  subscriptionPlans: {
+    title: "Subscription Tiers",
+    subtitle: "Predictable plans for different usage patterns.",
+    plans: [
+      {
+        name: "Recommended (Weekly)",
+        badge: "Recommended",
+        price: "Rs 1,399 / month",
+        includes: [
+          "4 exterior washes",
+          "2 quick vacuums",
+          "Priority slots",
+          "Free redo vacuum",
+        ],
+        idealFor: "High-use vehicles; daily commuters",
+      },
+      {
+        name: "Starter (Bi-weekly)",
+        price: "Rs 799 / month",
+        includes: [
+          "2 exterior washes",
+          "1 quick interior vacuum (monthly)",
+        ],
+        idealFor: "Regular users; weekend drivers",
+      },
+      {
+        name: "Care+",
+        price: "Rs 1,899 / month",
+        includes: [
+          "4 exterior washes",
+          "4 quick vacuums",
+          "1 deep interior / month",
+          "Priority support",
+        ],
+        idealFor: "Occasional users; value-conscious",
+      },
+    ],
+  },
+  subscriptionBenefits: {
+    title: "Subscription Benefits",
+    items: [
+      "Lock-in pricing (no surge pricing on peak days)",
+      "Priority booking (same day or next day slot guaranteed)",
+      "Free redo for any quality issues",
+      "10% referral credit (Rs 100 per successful new subscriber)",
+    ],
+  },
+  onDemandPricing: {
+    title: "On-Demand (B2C) Pricing",
+    items: [
+      { label: "Exterior wash (weekday)", value: "Rs 449" },
+      { label: "Exterior wash (weekend/peak)", value: "Rs 599" },
+      { label: "Quick vacuum add-on", value: "Rs 199" },
+      { label: "Deep interior", value: "Rs 1,199+" },
+    ],
+  },
+  fleetPricing: {
+    title: "B2B Fleet Pricing",
+    subtitle: "Structured plans for fleets (min 10 vehicles/month).",
+    minimumCommitment: "Minimum 10 vehicles per month",
+    plans: [
+      {
+        name: "Fleet Basic",
+        price: "Rs 899/vehicle/month",
+        includes: [
+          "4 exterior washes/month",
+          "Fixed schedule",
+          "Monthly invoice",
+        ],
+      },
+      {
+        name: "Fleet Standard (target)",
+        price: "Rs 1,299/vehicle/month",
+        includes: [
+          "4 exterior + 2 vacuums/month",
+          "SLA coverage",
+          "Redo included",
+        ],
+      },
+      {
+        name: "Fleet Premium",
+        price: "Rs 1,799/vehicle/month",
+        includes: [
+          "6 exterior + 4 vacuums/month",
+          "Priority reschedule",
+        ],
+      },
+    ],
+  },
+};
+
+export const siteConfig = {
+  name: landingPageConfig.brand.name,
+  tagline: landingPageConfig.brand.tagline,
+  description: landingPageConfig.brand.description,
+  hero: {
+    title: "Welcome to koelnr",
+    subtitle: landingPageConfig.brand.description,
+    primaryCTA: "Download App",
+    secondaryCTA: "View Pricing",
   },
   features: {
-    title: "Why Choose Karwsh?",
-    subtitle: "Premium service, unmatched convenience",
+    title: "Why Choose koelnr?",
+    subtitle: "Professional car care with reliable scheduling",
     items: [
       {
         icon: Car,
@@ -28,192 +282,18 @@ export const siteConfig = {
         icon: Zap,
         title: "Quick & Efficient",
         description:
-          "15-minute quick washes with professional equipment and eco-friendly products.",
+          "Time-boxed services and subscriptions designed for busy vehicle owners.",
       },
       {
         icon: Sparkles,
-        title: "Satisfaction Guaranteed",
+        title: "Consistent Quality",
         description:
-          "Not satisfied? Get a free re-wash within 48 hours. No questions asked.",
+          "SLA-backed workflows with redo support for quality issues.",
       },
     ],
-  },
-  carCare: {
-    title: "Professional Car Care",
-    description:
-      "Our trained professionals use premium products and advanced techniques to make your car shine like new.",
-    benefits: [
-      "Eco-friendly, waterless wash technology",
-      "Trained and verified professionals",
-      "Premium microfiber cloths and solutions",
-    ],
-    imageUrl: "https://placehold.harshsandhu.com/api/img?w=600&h=400",
-    imageAlt: "Car Wash Service",
-  },
-  pricing: {
-    title: "Choose Your Plan",
-    subtitle: "Flexible options for every need",
-    tiers: {
-      premium: {
-        name: "Premium Monthly",
-        badge: "MOST POPULAR",
-        description: "Perfect for individuals who want the best care",
-        price: "1,499",
-        currency: "₹",
-        period: "month",
-        features: [
-          {
-            title: "4 Deep Washes Monthly",
-            detail: "Worth ₹300 each (₹1,200 value)",
-          },
-          {
-            title: "Unlimited Quick Washes",
-            detail: "15 min service, normally ₹200/wash",
-          },
-          {
-            title: "Fixed Weekly Time Slot",
-            detail: "Recurring schedule, no rebooking hassle",
-          },
-          {
-            title: "24-Hour Flexible Rescheduling",
-            detail: "No penalties for changes",
-          },
-          {
-            title: "Re-wash Guarantee",
-            detail: "Free re-wash within 48 hours if unsatisfied",
-          },
-        ],
-        exclusions:
-          "Excludes: Interior detailing, wax, polish (available as add-ons)",
-        cta: "Subscribe Now",
-      },
-      onDemand: {
-        name: "On-Demand Quick Wash",
-        description: "No commitment, book when you need",
-        price: "200-250",
-        currency: "₹",
-        period: "wash",
-        features: [
-          {
-            title: "15-Minute Express Service",
-            detail: "Exterior wash + vacuum",
-          },
-          {
-            title: "Flexible Booking",
-            detail: "Subject to availability",
-          },
-          {
-            title: "No Recurring Commitment",
-            detail: "Pay as you go",
-          },
-        ],
-        badge: "Limited slots: 25% capacity per day",
-        cta: "Book Now",
-      },
-      alaCarte: {
-        name: "À La Carte Services",
-        description: "Premium add-ons for enhanced care",
-        priceRange: "300-5,000",
-        currency: "₹",
-        period: "service",
-        services: [
-          { name: "Deep Wash", price: "300" },
-          { name: "Wax Polish", price: "400" },
-          { name: "Interior Detailing", price: "500" },
-          { name: "Engine Wash", price: "600" },
-          { name: "Ceramic Coating", price: "2,000-5,000" },
-        ],
-        note: "Can be combined with any subscription or booked standalone",
-        cta: "View All Services",
-      },
-      corporate: {
-        name: "Corporate Fleet Management",
-        badge: "FOR BUSINESSES",
-        description: "Comprehensive solutions for fleets",
-        priceRange: "15K-25K",
-        currency: "₹",
-        period: "month",
-        features: [
-          {
-            title: "₹800-1,500 per vehicle/month",
-            detail: "Minimum 5-10 vehicles",
-          },
-          {
-            title: "Monthly Deep Wash",
-            detail: "+ Quarterly detailing included",
-          },
-          {
-            title: "Dedicated Account Manager",
-            detail: "Personalized fleet management",
-          },
-          {
-            title: "Invoiced Billing",
-            detail: "Corporate payment terms",
-          },
-          {
-            title: "Predictable Costs",
-            detail: "Stable revenue, reduced churn risk",
-          },
-        ],
-        cta: "Contact Sales",
-      },
-    },
-  },
-  process: {
-    title: "How It Works",
-    subtitle: "Simple, fast, and hassle-free",
-    steps: [
-      {
-        number: 1,
-        title: "Choose Your Plan",
-        description: "Select the subscription or service that fits your needs",
-      },
-      {
-        number: 2,
-        title: "Schedule Service",
-        description: "Pick your weekly slot or book on-demand",
-      },
-      {
-        number: 3,
-        title: "We Come to You",
-        description: "Our team arrives at your location on time",
-      },
-      {
-        number: 4,
-        title: "Enjoy Your Clean Car",
-        description: "Sparkling clean in just 15 minutes",
-      },
-    ],
-  },
-  cta: {
-    title: "Ready to Get Started?",
-    description:
-      "Join thousands of satisfied customers who trust Karwsh for their car care needs",
-    primaryButton: "Start Your Subscription",
-    secondaryButton: "Contact Us",
   },
   footer: {
-    description: "Premium car wash services at your doorstep.",
-    sections: [
-      {
-        title: "Services",
-        links: [
-          "Premium Subscription",
-          "Quick Wash",
-          "Add-on Services",
-          "Corporate Plans",
-        ],
-      },
-      {
-        title: "Company",
-        links: ["About Us", "Careers", "Contact", "Blog"],
-      },
-      {
-        title: "Legal",
-        links: ["Privacy Policy", "Terms of Service", "Refund Policy"],
-      },
-    ],
-    copyright: "2026 Karwsh. All rights reserved.",
+    copyright: landingPageConfig.brand.copyright,
   },
   comingSoon: (city: string) => {
     return allowedCities.includes(city)
@@ -223,7 +303,7 @@ export const siteConfig = {
           subtitle:
             "We're working hard to bring you the best car wash experience. Stay tuned!",
           description:
-            "Karwsh is launching soon with premium car wash services at your doorstep. Be the first to know when we launch.",
+            "koelnr is launching soon with premium car wash services at your doorstep. Be the first to know when we launch.",
           features: [
             {
               icon: Car,
@@ -233,7 +313,7 @@ export const siteConfig = {
             {
               icon: Zap,
               title: "Quick Service",
-              description: "15-minute express washes",
+              description: "Express washes and flexible scheduling",
             },
             {
               icon: Sparkles,
@@ -255,7 +335,7 @@ export const siteConfig = {
           subtitle:
             "We're working hard to bring you the best car wash experience. Stay tuned!",
           description:
-            "Karwsh is launching soon with premium car wash services at your doorstep. Be the first to know when we launch.",
+            "koelnr is launching soon with premium car wash services at your doorstep. Be the first to know when we launch.",
           features: [
             {
               icon: Car,
@@ -265,7 +345,7 @@ export const siteConfig = {
             {
               icon: Zap,
               title: "Quick Service",
-              description: "15-minute express washes",
+              description: "Express washes and flexible scheduling",
             },
             {
               icon: Sparkles,

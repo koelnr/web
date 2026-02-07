@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { landingPageConfig } from "@/lib/config";
 
 const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
   if (href.startsWith("#")) {
@@ -28,39 +28,46 @@ export function AppHeader() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold">Karwsh</span>
+              <span className="text-2xl font-bold">{landingPageConfig.brand.name}</span>
             </Link>
             <nav className="hidden md:flex items-center gap-6">
               <Link
-                href="#how-it-works"
-                onClick={(e) => smoothScroll(e, "#how-it-works")}
+                href="#services"
+                onClick={(e) => smoothScroll(e, "#services")}
                 className="text-sm font-medium transition-colors hover:text-primary"
               >
-                How it Works
+                Services
               </Link>
               <Link
-                href="#pricing"
-                onClick={(e) => smoothScroll(e, "#pricing")}
+                href="#subscriptions"
+                onClick={(e) => smoothScroll(e, "#subscriptions")}
                 className="text-sm font-medium transition-colors hover:text-primary"
               >
-                Pricing
+                Subscriptions
               </Link>
               <Link
-                href="#fleets"
-                onClick={(e) => smoothScroll(e, "#fleets")}
+                href="#on-demand"
+                onClick={(e) => smoothScroll(e, "#on-demand")}
                 className="text-sm font-medium transition-colors hover:text-primary"
               >
-                Fleets
+                On-Demand
+              </Link>
+              <Link
+                href="#fleet"
+                onClick={(e) => smoothScroll(e, "#fleet")}
+                className="text-sm font-medium transition-colors hover:text-primary"
+              >
+                Fleet
               </Link>
             </nav>
           </div>
 
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="sm" className="hidden sm:flex gap-2">
-              <MessageCircle className="h-4 w-4" />
-              <span>Call / WA</span>
+            <Button asChild size="sm">
+              <Link href="#hero" onClick={(e) => smoothScroll(e, "#hero")}>
+                Download App
+              </Link>
             </Button>
-            <Button size="sm">Book Trial ₹299</Button>
           </div>
         </div>
       </div>
