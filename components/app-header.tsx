@@ -23,52 +23,52 @@ const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
 
 export function AppHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full h-16 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+    <header className="sticky top-0 z-50 h-16 w-full border-b border-white/20 bg-background/80 backdrop-blur-xl supports-backdrop-filter:bg-background/65">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-10">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold">{landingPageConfig.brand.name}</span>
+              <span className="font-display text-2xl font-black tracking-tight">
+                {landingPageConfig.brand.name}
+              </span>
             </Link>
-            <nav className="hidden md:flex items-center gap-6">
+            <nav className="hidden items-center gap-6 md:flex">
               <Link
                 href="#services"
                 onClick={(e) => smoothScroll(e, "#services")}
-                className="text-sm font-medium transition-colors hover:text-primary"
+                className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
               >
                 Services
               </Link>
               <Link
                 href="#subscriptions"
                 onClick={(e) => smoothScroll(e, "#subscriptions")}
-                className="text-sm font-medium transition-colors hover:text-primary"
+                className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
               >
                 Subscriptions
               </Link>
               <Link
                 href="#on-demand"
                 onClick={(e) => smoothScroll(e, "#on-demand")}
-                className="text-sm font-medium transition-colors hover:text-primary"
+                className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
               >
                 On-Demand
               </Link>
               <Link
                 href="#fleet"
                 onClick={(e) => smoothScroll(e, "#fleet")}
-                className="text-sm font-medium transition-colors hover:text-primary"
+                className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
               >
                 Fleet
               </Link>
             </nav>
           </div>
 
-          <div className="flex items-center gap-3">
-            <Button asChild size="sm">
-              <Link href="#hero" onClick={(e) => smoothScroll(e, "#hero")}>
-                Download App
-              </Link>
-            </Button>
-          </div>
+          <Button asChild size="sm" className="rounded-full px-5">
+            <Link href="#hero" onClick={(e) => smoothScroll(e, "#hero")}>
+              Download App
+            </Link>
+          </Button>
         </div>
       </div>
     </header>

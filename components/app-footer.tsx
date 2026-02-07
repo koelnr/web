@@ -5,25 +5,28 @@ import { landingPageConfig, siteConfig } from "@/lib/config";
 
 export function AppFooter() {
   return (
-    <footer className="bg-background border-t py-12">
-      <div className="container mx-auto px-4">
+    <footer className="relative overflow-hidden border-t bg-background py-14">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(30,157,241,0.12),transparent_45%)]" />
+      <div className="container relative mx-auto px-4">
         <div className="space-y-8">
-          <div className="text-center space-y-4">
-            <h3 className="text-2xl font-bold">{landingPageConfig.brand.name}</h3>
+          <div className="space-y-4 text-center">
+            <h3 className="font-display text-3xl font-black tracking-tight">
+              {landingPageConfig.brand.name}
+            </h3>
             <p className="text-muted-foreground">{landingPageConfig.brand.tagline}</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="mx-auto max-w-2xl text-sm text-muted-foreground">
               {landingPageConfig.brand.description}
             </p>
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild variant="outline" size="sm" className="gap-2">
+            <Button asChild variant="outline" size="sm" className="gap-2 rounded-full">
               <Link href="#">
                 <Instagram className="h-4 w-4" />
                 Instagram
               </Link>
             </Button>
-            <Button asChild variant="outline" size="sm" className="gap-2">
+            <Button asChild variant="outline" size="sm" className="gap-2 rounded-full">
               <Link href="#">
                 <Mail className="h-4 w-4" />
                 Email
@@ -31,7 +34,7 @@ export function AppFooter() {
             </Button>
           </div>
 
-          <div className="text-center text-sm text-muted-foreground border-t pt-8">
+          <div className="border-t pt-8 text-center text-sm text-muted-foreground">
             <p>&copy; {siteConfig.footer.copyright}</p>
           </div>
         </div>

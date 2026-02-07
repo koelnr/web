@@ -12,6 +12,12 @@ export type HeroConfig = {
   badge: string;
   title: string;
   subtitle: string;
+  highlights: string[];
+  sideCard: {
+    eyebrow: string;
+    price: string;
+    points: string[];
+  };
   backgroundImage: {
     src: string;
     alt: string;
@@ -94,6 +100,20 @@ export const landingPageConfig: LandingPageConfig = {
     title: "Consistent car care at your doorstep.",
     subtitle:
       "Book exterior washes, interior upgrades, and fleet plans with transparent monthly pricing.",
+    highlights: [
+      "Eco-first water usage",
+      "Priority booking slots",
+      "Quality redo guarantee",
+    ],
+    sideCard: {
+      eyebrow: "Starting from",
+      price: "Rs 799/mo",
+      points: [
+        "25-35 min standard exterior service",
+        "Free redo on quality issues",
+        "Flexible on-demand and subscription plans",
+      ],
+    },
     backgroundImage: {
       src: "/images/brad-starkey-W5yX_dPokH4-unsplash.jpg",
       alt: "Car being cleaned by a professional service",
