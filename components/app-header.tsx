@@ -34,13 +34,6 @@ export function AppHeader() {
             </Link>
             <nav className="hidden items-center gap-6 md:flex">
               <Link
-                href="#services"
-                onClick={(e) => smoothScroll(e, "#services")}
-                className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Services
-              </Link>
-              <Link
                 href="#subscriptions"
                 onClick={(e) => smoothScroll(e, "#subscriptions")}
                 className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"

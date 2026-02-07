@@ -83,8 +83,8 @@ export type LandingPageConfig = {
   fleetPricing: {
     title: string;
     subtitle: string;
-    minimumCommitment: string;
-    plans: FleetPlanConfig[];
+    contactOnlyMessage: string;
+    contactEmail: string;
   };
   conversionCta: {
     title: string;
@@ -141,8 +141,7 @@ export const landingPageConfig: LandingPageConfig = {
       src: "/images/brad-starkey-W5yX_dPokH4-unsplash.jpg",
       alt: "Car being cleaned by a professional service",
     },
-    overlayClassName:
-      "bg-gradient-to-b from-black/70 via-black/55 to-black/65",
+    overlayClassName: "bg-gradient-to-b from-black/70 via-black/55 to-black/65",
     ctas: [
       {
         store: "apple",
@@ -166,8 +165,7 @@ export const landingPageConfig: LandingPageConfig = {
         id: "tier-1",
         title: "Tier 1 - Exterior Wash",
         subtitle: "Base Plan",
-        price:
-          "One-time: Rs 299-Rs 399 | Subscription: Rs 999-Rs 1,399/month",
+        price: "One-time: Rs 299-Rs 399 | Subscription: Rs 999-Rs 1,399/month",
         details: [
           "Waterless or low-water wash (eco-friendly)",
           "Exterior shine and polish",
@@ -198,24 +196,18 @@ export const landingPageConfig: LandingPageConfig = {
           "Window glass cleaning (interior and exterior)",
         ],
       },
-      {
-        id: "tier-b2b",
-        title: "B2B Fleet Contracts",
-        subtitle: "Business Plans",
-        price: "Rs 1,999-Rs 2,999 per vehicle/month",
-        details: [
-          "Fixed pricing per vehicle per month",
-          "Dedicated washing slots (weekday mornings before 8 AM)",
-          "Service level agreement with guaranteed uptime and redo policy",
-          "Minimum 10 vehicles; 6-month commitment",
-        ],
-      },
     ],
   },
   subscriptionPlans: {
     title: "Subscription Tiers",
     subtitle: "Predictable plans for different usage patterns.",
     plans: [
+      {
+        name: "Starter (Bi-weekly)",
+        price: "Rs 799 / month",
+        includes: ["2 exterior washes", "1 quick interior vacuum (monthly)"],
+        idealFor: "Regular users; weekend drivers",
+      },
       {
         name: "Recommended (Weekly)",
         badge: "Recommended",
@@ -227,15 +219,6 @@ export const landingPageConfig: LandingPageConfig = {
           "Free redo vacuum",
         ],
         idealFor: "High-use vehicles; daily commuters",
-      },
-      {
-        name: "Starter (Bi-weekly)",
-        price: "Rs 799 / month",
-        includes: [
-          "2 exterior washes",
-          "1 quick interior vacuum (monthly)",
-        ],
-        idealFor: "Regular users; weekend drivers",
       },
       {
         name: "Care+",
@@ -270,36 +253,10 @@ export const landingPageConfig: LandingPageConfig = {
   },
   fleetPricing: {
     title: "B2B Fleet Pricing",
-    subtitle: "Structured plans for fleets (min 10 vehicles/month).",
-    minimumCommitment: "Minimum 10 vehicles per month",
-    plans: [
-      {
-        name: "Fleet Basic",
-        price: "Rs 899/vehicle/month",
-        includes: [
-          "4 exterior washes/month",
-          "Fixed schedule",
-          "Monthly invoice",
-        ],
-      },
-      {
-        name: "Fleet Standard (target)",
-        price: "Rs 1,299/vehicle/month",
-        includes: [
-          "4 exterior + 2 vacuums/month",
-          "SLA coverage",
-          "Redo included",
-        ],
-      },
-      {
-        name: "Fleet Premium",
-        price: "Rs 1,799/vehicle/month",
-        includes: [
-          "6 exterior + 4 vacuums/month",
-          "Priority reschedule",
-        ],
-      },
-    ],
+    subtitle: "Fleet plans are currently available on request only.",
+    contactOnlyMessage:
+      "For business fleet servicing, please contact our support team and we will share a custom proposal.",
+    contactEmail: "support@koelnr.com",
   },
   conversionCta: {
     title: "Ready to Scale Car Care Across Your Vehicles?",

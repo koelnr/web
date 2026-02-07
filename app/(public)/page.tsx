@@ -18,7 +18,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { FadeIn, ScrollReveal } from "@/components/animations";
+import { FadeIn } from "@/components/animations";
 import { landingPageConfig } from "@/lib/config";
 
 function AppStoreIcon() {
@@ -41,7 +41,10 @@ function HeroSection() {
   const { hero, brand } = landingPageConfig;
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center overflow-hidden"
+    >
       <Image
         src={hero.backgroundImage.src}
         alt={hero.backgroundImage.alt}
@@ -51,7 +54,7 @@ function HeroSection() {
       />
       <div className={`absolute inset-0 ${hero.overlayClassName}`} />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.18),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(30,157,241,0.28),transparent_35%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-size-[40px_40px]" />
 
       <div className="container relative z-10 mx-auto px-4 py-24">
         <div className="grid items-end gap-10 lg:grid-cols-[1.2fr_0.8fr]">
@@ -88,7 +91,10 @@ function HeroSection() {
                         : "h-12 rounded-full border-white/50 bg-white/10 px-7 text-white hover:bg-white/20"
                     }
                   >
-                    <Link href={cta.href} className="inline-flex items-center gap-2">
+                    <Link
+                      href={cta.href}
+                      className="inline-flex items-center gap-2"
+                    >
                       {cta.store === "apple" ? (
                         <AppStoreIcon />
                       ) : (
@@ -105,13 +111,10 @@ function HeroSection() {
             <FadeIn delay={0.32}>
               <div className="flex flex-wrap gap-3">
                 {hero.highlights.map((highlight) => (
-                  <span
-                    key={highlight}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/10 px-4 py-2 text-sm text-white/95 backdrop-blur-sm"
-                  >
-                    <Circle className="size-2 fill-white stroke-none" />
+                  <Badge key={highlight} variant="secondary">
+                    <Circle className="size-1 fill-white stroke-none" />
                     {highlight}
-                  </span>
+                  </Badge>
                 ))}
               </div>
             </FadeIn>
@@ -151,64 +154,23 @@ function HeroSection() {
   );
 }
 
-function ServiceTiersSection() {
-  const { serviceTiers } = landingPageConfig;
-
-  return (
-    <section id="services" className="relative overflow-hidden bg-background py-24">
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-primary/10 to-transparent" />
-      <div className="container relative mx-auto px-4">
-        <ScrollReveal>
-          <div className="mx-auto mb-12 max-w-3xl text-center">
-            <h2 className="text-3xl font-black tracking-tight md:text-5xl">
-              {serviceTiers.title}
-            </h2>
-            <p className="mt-4 text-muted-foreground">{serviceTiers.subtitle}</p>
-          </div>
-        </ScrollReveal>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          {serviceTiers.tiers.map((tier) => (
-            <Card
-              key={tier.id}
-              className="group border-border/70 bg-card/60 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl"
-            >
-              <CardHeader>
-                <CardDescription className="uppercase tracking-wide text-xs">
-                  {tier.subtitle}
-                </CardDescription>
-                <CardTitle className="text-2xl leading-tight">{tier.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="font-semibold text-primary">{tier.price}</p>
-                <ul className="space-y-2.5">
-                  {tier.details.map((detail) => (
-                    <li key={detail} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
-                      <span>{detail}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function SubscriptionPlansSection() {
   const { subscriptionPlans } = landingPageConfig;
 
   return (
-    <section id="subscriptions" className="bg-slate-50 py-24">
-      <div className="container mx-auto px-4">
+    <section
+      id="subscriptions"
+      className="relative overflow-hidden bg-background py-24"
+    >
+      <div className="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-primary/10 to-transparent" />
+      <div className="container relative mx-auto px-4">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <h2 className="text-3xl font-black tracking-tight md:text-5xl">
             {subscriptionPlans.title}
           </h2>
-          <p className="mt-4 text-muted-foreground">{subscriptionPlans.subtitle}</p>
+          <p className="mt-4 text-muted-foreground">
+            {subscriptionPlans.subtitle}
+          </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
@@ -232,8 +194,8 @@ function SubscriptionPlansSection() {
                   {plan.price}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-2">
+              <CardContent className="h-full flex flex-col space-y-4">
+                <ul className="flex-1 space-y-2">
                   {plan.includes.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
@@ -243,7 +205,9 @@ function SubscriptionPlansSection() {
                 </ul>
                 <Separator />
                 <p className="text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground">Ideal for:</span>{" "}
+                  <span className="font-semibold text-foreground">
+                    Ideal for:
+                  </span>{" "}
                   {plan.idealFor}
                 </p>
               </CardContent>
@@ -261,8 +225,8 @@ function SubscriptionBenefitsSection() {
   return (
     <section className="bg-background py-20">
       <div className="container mx-auto px-4">
-        <Card className="overflow-hidden border-primary/25">
-          <div className="bg-gradient-to-r from-primary/10 via-background to-background p-7">
+        <Card className="bg-background overflow-hidden border-primary/25">
+          <div className="px-8 pt-4">
             <CardTitle className="text-2xl font-black tracking-tight">
               {subscriptionBenefits.title}
             </CardTitle>
@@ -290,7 +254,7 @@ function OnDemandPricingSection() {
   const { onDemandPricing } = landingPageConfig;
 
   return (
-    <section id="on-demand" className="bg-slate-50 py-24">
+    <section id="on-demand" className="bg-card py-24">
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-10 max-w-3xl text-center">
           <h2 className="text-3xl font-black tracking-tight md:text-5xl">
@@ -303,7 +267,10 @@ function OnDemandPricingSection() {
             <Card key={item.label} className="border-border/80 bg-background">
               <CardContent className="flex items-center justify-between gap-4 pt-6">
                 <p className="font-medium">{item.label}</p>
-                <Badge variant="secondary" className="rounded-full px-3 py-1 text-sm">
+                <Badge
+                  variant="secondary"
+                  className="rounded-full px-3 py-1 text-sm"
+                >
                   {item.value}
                 </Badge>
               </CardContent>
@@ -326,35 +293,18 @@ function FleetPricingSection() {
             {fleetPricing.title}
           </h2>
           <p className="mt-4 text-muted-foreground">{fleetPricing.subtitle}</p>
-          <Badge className="mt-5 rounded-full bg-primary/12 px-4 py-1.5 text-primary hover:bg-primary/16">
-            {fleetPricing.minimumCommitment}
-          </Badge>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-3">
-          {fleetPricing.plans.map((plan) => (
-            <Card
-              key={plan.name}
-              className="border-border/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-            >
-              <CardHeader>
-                <CardTitle>{plan.name}</CardTitle>
-                <CardDescription className="text-base font-semibold text-primary">
-                  {plan.price}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {plan.includes.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-primary" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
+          <Card className="mt-8 border-primary/25 bg-primary/5">
+            <CardContent className="space-y-5 p-8">
+              <p className="text-sm text-muted-foreground">
+                {fleetPricing.contactOnlyMessage}
+              </p>
+              <Button asChild size="lg" className="rounded-full px-8">
+                <Link href={`mailto:${fleetPricing.contactEmail}`}>
+                  {fleetPricing.contactEmail}
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
@@ -365,9 +315,9 @@ function ConversionCtaSection() {
   const { conversionCta } = landingPageConfig;
 
   return (
-    <section className="bg-slate-50 py-24">
+    <section className="bg-card py-24">
       <div className="container mx-auto px-4">
-        <Card className="overflow-hidden border-primary/25 bg-gradient-to-br from-background via-background to-primary/5">
+        <Card className="overflow-hidden border-primary/25 bg-linear-to-br from-background via-background to-primary/5">
           <CardContent className="p-8 md:p-12">
             <div className="mx-auto max-w-3xl space-y-6 text-center">
               <Badge className="rounded-full bg-primary/10 text-primary hover:bg-primary/20">
@@ -383,7 +333,12 @@ function ConversionCtaSection() {
                     {conversionCta.primary.label}
                   </Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="rounded-full px-8">
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full px-8"
+                >
                   <Link href={conversionCta.secondary.href}>
                     {conversionCta.secondary.label}
                   </Link>
@@ -422,7 +377,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background pb-20 md:pb-0">
       <HeroSection />
-      <ServiceTiersSection />
       <SubscriptionPlansSection />
       <SubscriptionBenefitsSection />
       <OnDemandPricingSection />
